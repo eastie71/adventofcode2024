@@ -1,3 +1,8 @@
+import sys
+import os
+sys.path.append(os.path.abspath("../common"))
+from globals import *
+
 """
 Question 1A) Calculate the total difference between the left and right lists of location IDs
 To calculate the distance you must get the lowest number from the left listand compare it with the lowest number of the right list, and then sum all the differences for every line.
@@ -27,7 +32,8 @@ def get_distance_sum(values):
         sum += abs(right_list[i] - left_list[i])
     return sum
 
-with open("Q1input.txt", "r") as file:
+input_file = INPUT_LOCATION + "Q1input.txt"
+with open(input_file, "r") as file:
     entries = [line.strip() for line in file.readlines()]
 
 print(f"2024 - Question 1A: Total distance between location IDs = {get_distance_sum(entries)}")

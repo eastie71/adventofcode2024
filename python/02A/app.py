@@ -1,3 +1,8 @@
+import sys
+import os
+sys.path.append(os.path.abspath("../common"))
+from globals import *
+
 """
 Question 2A) Calculate the total safe reports. Each line is considered a report.
 To calculate if a line is safe, all levels must be increasing or decreasing AND any 2 adjacent levels must be between 1 and 3 difference.
@@ -39,7 +44,8 @@ def get_num_of_safe_reports(reports):
             sum += 1
     return sum
 
-with open("Q2input.txt", "r") as file:
+input_file = INPUT_LOCATION + "Q2input.txt"
+with open(input_file, "r") as file:
     entries = [line.strip() for line in file.readlines()]
 
 print(f"2024 - Question 2A: Total number of safe reports = {get_num_of_safe_reports(entries)}")

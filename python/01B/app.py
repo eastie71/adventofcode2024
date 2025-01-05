@@ -1,3 +1,8 @@
+import sys
+import os
+sys.path.append(os.path.abspath("../common"))
+from globals import *
+
 """
 Question 1B) Calculate the total similarity score
 To calculate the total similarity score you multiply each number in the LEFT list by the number of times that number appears in the RIGHT list, and sum all together.
@@ -37,7 +42,8 @@ def get_similarity_score(values):
 
     return sum
 
-with open("Q1input.txt", "r") as file:
+input_file = INPUT_LOCATION + "Q1input.txt"
+with open(input_file, "r") as file:
     entries = [line.strip() for line in file.readlines()]
 
 print(f"2024 - Question 1B: Total similarity score for the location IDs = {get_similarity_score(entries)}")

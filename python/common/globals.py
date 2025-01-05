@@ -1,0 +1,1 @@
+INPUT_LOCATION = "..\\..\\input_data\\"
