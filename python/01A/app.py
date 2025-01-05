@@ -5,7 +5,7 @@ from globals import *
 
 """
 Question 1A) Calculate the total difference between the left and right lists of location IDs
-To calculate the distance you must get the lowest number from the left listand compare it with the lowest number of the right list, and then sum all the differences for every line.
+To calculate the distance you must get the lowest number from the left list and compare it with the lowest number of the right list, and then sum all the differences for every line.
 """
 # For the following 6 lines, values to compare are (1,3),(2,3),(3,3),(3,4),(3,5) and (4,9). 2 + 1 + 0 + 2 + 2 + 5 = 11
 test_entries = ["3   4", "4   3", "2   5",  "1   3", "3   9", "3   3"]
