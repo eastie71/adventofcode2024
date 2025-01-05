@@ -37,11 +37,24 @@ def is_safe_report_line(results):
             return False
     return True
 
+def is_safe_report_line_with_tolerence(results):
+    if is_safe_report_line(results):
+        return True
+    for i in range(0, len(results)):
+        # Grab a copy of the results
+        adjusted_results = results.copy()
+        # Remove one of results and see if the report is safe now?
+        adjusted_results.pop(i)
+        # If its safe now, just return, else try removing the next number
+        if is_safe_report_line(adjusted_results):
+            return True
+    return False
+
 def get_num_of_safe_reports(reports):
     sum = 0
     for report_line in reports:
         results = report_line.split(' ')
-        if is_safe_report_line(results):
+        if is_safe_report_line_with_tolerence(results):
             sum += 1
     return sum
 
