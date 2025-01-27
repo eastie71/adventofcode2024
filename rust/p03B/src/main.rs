@@ -20,6 +20,7 @@ fn get_entries(filename: &str) -> String {
     let split_text = read_text.split("\r\n");
 
     let mut entries_line = String::new();
+    // Concatenate all the lines into a single string
     for line in split_text {
         entries_line.push_str(line);
     }
@@ -58,12 +59,13 @@ fn get_sum_of_multiplication_results(memory: String) -> i32 {
     // Start with mul enabled, hence get the block of data before the first dont() instruction
     let dont_parts = memory.split(dont_str).collect::<Vec<&str>>();
     let do_block = dont_parts[0];
+    // Here, we need the dont_block to be EVERYTHING after the dont() instruction, hence split at position after the dont() instruction
     let mut dont_block = memory.split_at(do_block.len()+dont_str.len()).1;
     // calculate the mul sum for the do block
     sum += get_sum_for_memory_line(&do_block);
 
     loop {
-        // The first part of the dont block of data we are NOT interested in.
+        // The first part of the dont block of data we are NOT interested in. So just ignore it.
         // The second part is the block of data we are interested in, but only up to the next dont() instruction.
         let mut parts: Vec<&str> = dont_block.split(do_str).collect();
         let next_dont_block_pos: usize;
