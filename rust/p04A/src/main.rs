@@ -33,7 +33,6 @@ const TEST_ENTRIES: [&str; 10] =   ["MMMSXXMASM",
                                     "MXMXAXMASX"]; 
 
 
-
 fn get_entries(filename: &str) -> Vec<String> {
     let full_filename = format!("..\\..\\input_data\\{filename}");
     let read_text = fs::read_to_string(full_filename).expect("Failed to read input file");
@@ -46,9 +45,7 @@ fn get_entries(filename: &str) -> Vec<String> {
     entries
 }
 
-fn get_num_of_xmas_words(rows_of_text: Vec<String>) -> i32 {
-    let mut sum = 0;
-    
+fn get_num_of_xmas_words(rows_of_text: Vec<String>) -> usize {
     let mut word_search_grid = XmasWordSearch::new(rows_of_text.len(), rows_of_text[0].len());
 
     for (row_idx, text_row) in rows_of_text.iter().enumerate() {
@@ -60,7 +57,9 @@ fn get_num_of_xmas_words(rows_of_text: Vec<String>) -> i32 {
 
     word_search_grid.display();
 
-    sum
+    // Calculate the total number of instances of the word 'XMAS'
+    word_search_grid.set_word_count();
+    word_search_grid.get_total_word_count(false)
 }
 
 fn main() {
@@ -69,6 +68,6 @@ fn main() {
 
     let entries = get_entries("Q4input.txt");
 
-    // Pass ownership of entries through to the "get_num_of_safe_reports" function
-    println!("2024 - Question 4A: Total number of instances of the word XMAS found = {}", get_num_of_xmas_words(_test_entries_strings));
+    // Pass ownership of entries through to the "get_num_of_xmas_words" function
+    println!("2024 - Question 4A: Total number of instances of the word XMAS found = {}", get_num_of_xmas_words(entries));
 }
